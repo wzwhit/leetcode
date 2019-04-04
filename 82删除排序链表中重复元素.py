@@ -9,10 +9,10 @@ class Solution:
         if head == None:
             return head
         p1 = head.next
-        p2 = head
-        s = ListNode(0)
+        p2 = head#双指针
+        s = ListNode(0)#始终指向p2,记录链表
         s.next = head
-        out = s
+        out = s#输出,链表头结点
         while p1:
             if p2.val != p1.val:
                 p1 = p1.next
