@@ -21,7 +21,7 @@ class Solution:
             else:
                 while p2.val == p1.val:
                     if p1.next:
-                        p1 = p1.next
+                        p1 = p1.next#一样的数不止一个，找完
                     else:
                         s.next = None
                         return out.next
