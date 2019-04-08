@@ -3,7 +3,7 @@
 #     def __init__(self, x):
 #         self.val = x
 #         self.next = None
-
+#反转链表第m到n的部分，头插法，p从m到n遍历，插入到第m的位置
 class Solution:
     def reverseBetween(self, head: ListNode, m: int, n: int) -> ListNode:
         if head == None or m == n:
