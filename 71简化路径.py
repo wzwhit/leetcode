@@ -12,7 +12,6 @@ class Solution:
                     stack.pop()
             else:
                 stack.append(s[i])#入栈
-        stack2 = [str(i) for i in stack]
-        out = '/'.join(stack2)#list转string
+        out = '/'.join(stack)#list转string
         out = '/' + out#路径开头加入'/'
         return out
