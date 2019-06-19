@@ -8,6 +8,7 @@
 #  输入：["H","a","n","n","a","h"]
 #  输出：["h","a","n","n","a","H"]
 
+#  循环
 class Solution:
     def reverseString(self, s: List[str]) -> None:
         """
@@ -15,3 +16,11 @@ class Solution:
         """
         for i in range(len(s)//2):
             s[i],s[-1-i] = s[-1-i],s[i]
+
+#  list[::-1]
+class Solution:
+    def reverseString(self, s: List[str]) -> None:
+        """
+        Do not return anything, modify s in-place instead.
+        """
+        s[:] = s[::-1]
