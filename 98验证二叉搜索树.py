@@ -29,3 +29,40 @@ class Solution:
             if out[i] >= out[i+1]:
                 return False
         return True
+###
+class Solution(object):
+    def isValidBST(self, root):
+        """
+        :type root: TreeNode
+        :rtype: bool
+        """
+        stack = []
+        min = -2147483649
+        while root or stack:
+            while root:
+                stack.append(root)
+                root = root.left
+            root = stack.pop()
+            if root.val <= min:
+                return False
+            min = root.val
+            root = root.right
+        return True
+#  递归
+class Solution(object):
+    def isValidBST(self, root):
+        """
+        :type root: TreeNode
+        :rtype: bool
+        """
+        if not root:
+            return True
+        out = []
+        def helper(root):
+            if not root:
+                return
+            helper(root.left)
+            out.append(root.val)
+            helper(root.right)
+        helper(root)
+        return out == sorted(out) and len(out) == len(set(out))
