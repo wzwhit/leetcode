@@ -60,4 +60,27 @@ class Solution:
                 stack.pop()
         return len(stack) == 0
 
-
+class Solution(object):
+    def isValid(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        if len(s) == 0:
+            return True
+        if len(s) < 2:
+            return False
+        brackets = ['()','[]','{}']
+        stack = []
+        for i in range(len(s)):
+            if s[i] == '(' or s[i] == '[' or s[i] == '{':
+                stack.append(s[i])
+            elif s[i] == ')' or s[i] == ']' or s[i] == '}':
+                if len(stack) == 0:
+                    return False
+                if stack.pop() + s[i] not in brackets:
+                    return False
+        if len(stack) == 0:
+            return True
+        else:
+            return False
