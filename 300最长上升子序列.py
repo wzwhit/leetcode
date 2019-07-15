@@ -30,6 +30,7 @@ class Solution(object):
                 if len(maxlenlist) == 1:
                     maxlenlist[0] = nums[i]
                 else:
+                    #  把这个循环替换为二分查找，则时间复杂度为O(n log n)
                     for j in range(len(maxlenlist)-1):
                         if maxlenlist[j] < nums[i] and maxlenlist[j+1] > nums[i]:
                             maxlenlist[j+1] = nums[i]
