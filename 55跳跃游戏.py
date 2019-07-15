@@ -25,3 +25,23 @@ class Solution:
                 if j == -1:
                     return False
         return True
+
+#  记录最大能到达的地方
+class Solution(object):
+    def canJump(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: bool
+        """
+        if len(nums) < 2:
+            return True
+
+        maxskip = 0
+        for i in range(len(nums)):
+            if i > maxskip:
+                return False
+            maxskip = max(maxskip, i+nums[i])
+        if maxskip >= len(nums)-1:
+            return True
+        else:
+            return False
