@@ -17,18 +17,14 @@
 #  回溯法
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
+        if len(nums) < 1:
+            return [[]]
         out = []
-        def backtrack(k, i, tmp):
-            #print(k,i,tmp)
-            if i > len(nums):
+        def backtrack(res, tmp):
+            out.append(tmp)
+            if not res:
                 return
-            if len(tmp) == k:
-                if tmp not in out:
-                    out.append(tmp)
-                return
-            for j in range(i, len(nums)):
-                backtrack(k, j+1, tmp+[nums[j]])
-
-        for k in range(len(nums)+1):
-            backtrack(k,0,[])
+            for j in range(len(res)):
+                backtrack(res[j+1:], tmp+[res[j]])
+        backtrack(nums, [])
         return out
