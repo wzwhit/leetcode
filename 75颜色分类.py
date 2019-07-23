@@ -16,22 +16,19 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        if len(nums) > 1:
-            i = 0
-            lp = 0
-            rp = len(nums) - 1
-            while i < len(nums):
-                print(i,nums)
-                if nums[i] == 0:
-                    nums[i], nums[lp] = nums[lp], nums[i]
-                    lp += 1
-                    i += 1
-                elif nums[i] == 2:
-                    if i < rp:
-                        nums[i], nums[rp] = nums[rp], nums[i]
-                        print(nums)
-                        rp -= 1
-                    else:
-                        i += 1
-                elif nums[i] == 1:
-                    i += 1
+        if len(nums) < 2:
+            return
+        l = 0
+        r = len(nums) - 1
+        i = 0
+        while i <= r:
+            print(nums,i,l,r)
+            if nums[i] == 0:
+                nums[i], nums[l] = nums[l], nums[i]
+                l += 1
+                i += 1
+            elif nums[i] == 2:
+                nums[i], nums[r] = nums[r], nums[i]
+                r -= 1
+            else:
+                i += 1
