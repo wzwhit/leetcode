@@ -43,7 +43,5 @@ class Solution:
             out.append(root.val)
             out = helper(root.right, out)
             return out
-        out = helper(root.left, [])
-        out.append(root.val)
-        out = helper(root.right, out)
+        out = helper(root, [])
         return out[k-1]
