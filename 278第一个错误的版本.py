@@ -35,5 +35,4 @@ class Solution(object):
                 return helper(l,mid)
             else:
                 return helper(mid+1,r)
-
         return helper(1,n)
