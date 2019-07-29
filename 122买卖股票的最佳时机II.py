@@ -35,3 +35,26 @@ class Solution:
             i = max + 1
         return p
 
+#  动态规划
+#  状态转移方程：
+#  dp[i][k][0] = max(dp[i-1][k][0], dp[i-1][k][1] + prices[i])
+#  dp[i][k][1] = max(dp[i-1][k][1], dp[i-1][k-1][0] - prices[i])
+#  k为买卖次数，这里k不限制，所以可以省略不考虑
+#  i为天数，0/1表示是否持有股票
+#  考虑初始状态i=0时的情况
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        N = len(prices)
+        if N < 2:
+            return 0
+        O = [[0 for _ in range(2)] for _ in range(N)]
+        for i in range(N):
+            if i == 0:
+                O[i][0] = 0
+                O[i][1] = -prices[i]
+            else:
+                O[i][0] = max(O[i-1][0], O[i-1][1]+prices[i])
+                O[i][1] = max(O[i-1][1], O[i-1][0]-prices[i])
+
+        return O[-1][0]
+
