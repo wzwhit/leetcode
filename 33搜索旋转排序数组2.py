@@ -17,31 +17,23 @@ class Solution:
             return -1
         left = 0
         right = len(nums)-1
-        while left <= right:
-            mid = (left + right) // 2
-            if nums[mid] == target:
-                return mid
-            if nums[left] <= nums[mid]:
-                if nums[left] <= target <= nums[mid]:
-                    return self.midsearch(nums, left, mid,target)
-                else:
-                    left = mid+1
-            else:
-                if nums[mid] <= target <= nums[right]:
-                    return self.midsearch(nums, mid, right, target)
-                else:
-                    right = mid-1
-        return -1
+        return self.midsearch(nums, left, right, target)
         
     def midsearch(self, nums, left, right, target): 
-        print(left, right)
+        # print(left, right)
         if left > right:
             return -1
         mid = (left+right) // 2       
         if nums[mid] == target:
             return mid
-        if nums[left] <= target <= nums[mid]:       
-            return self.midsearch(nums, left, mid-1,target)
+        if nums[left] <= nums[mid]:
+            if nums[left] <= target <= nums[mid]:       
+                return self.midsearch(nums, left, mid-1,target)
+            else:
+                return self.midsearch(nums, mid+1, right, target)
         else:
-            return self.midsearch(nums, mid+1, right,target)
+            if nums[mid+1] <= target <= nums[right]:       
+                return self.midsearch(nums, mid+1, right,target)
+            else:
+                return self.midsearch(nums, left, mid-1, target)
         return -1
