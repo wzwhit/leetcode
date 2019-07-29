@@ -14,7 +14,7 @@ class Solution:
 
     def inorder(self, root: TreeNode, out: List):
         if root != None:
-            self.inorder(root.left,out)#遍历左子树
+            out = self.inorder(root.left,out)#遍历左子树
             out.append(root.val)#访问根节点
-            self.inorder(root.right,out)#遍历右子树
+            out = self.inorder(root.right,out)#遍历右子树
         return out
