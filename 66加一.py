@@ -31,21 +31,19 @@
 # 解释: 输入数组表示数字 4321。
 #
 #
-#
 class Solution:
-    def plusOne(self, digits: 'List[int]') -> 'List[int]':
-        n = len(digits)
-        digits[-1] += 1
-        for i in range(n-1,-1,-1):
-            if digits[i] <= 9:
-                return digits
-            elif digits[i] == 10:
-                digits[i] = 0
-                if i == 0:
+    def plusOne(self, digits: List[int]) -> List[int]:
+        if not digits:
+            return digits
+        i = len(digits) - 1
+        while i > -1:
+            digits[i] += 1
+            if digits[i] == 10:
+                digits[i] -= 10
+                i -= 1
+                if i == -1:
                     digits[0:0] = [1]
                     return digits
-                elif i > 0:
-                    digits[i-1] += 1
-
-
-
+            else:
+                return digits
+        return digits
