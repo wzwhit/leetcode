@@ -14,14 +14,11 @@ class Solution:
             return head
         else:
             h.next = head.next
-        while p.next != None:
+        while p and p.next != None:
             s = p.next.next
             p.next.next = p
             e.next = p.next
             p.next = s
             e = p
             p = p.next
-            #print(p.val)
-            if p == None:
-                return h.next
         return h.next
