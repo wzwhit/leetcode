@@ -34,3 +34,25 @@ class Solution:
                 o.append(i + j)
         s[0:2] = [o]
         return s
+
+# 回溯
+class Solution:
+    def letterCombinations(self, digits: str) -> List[str]:
+        if not digits:
+            return []
+        letter = ['abc','def','ghi','jkl','mno','pqrs','tuv','wxyz']
+        out = []
+        def backtrack(i, tmp):
+            # print(i, tmp,out)
+            if len(tmp) == len(digits):
+                out.append(tmp)
+                return
+            if i >= len(digits):
+                return      
+            if int(digits[i]) == 1:
+                return
+            for j in letter[int(digits[i])-2]:
+                backtrack(i+1, tmp+j)
+        
+        backtrack(0, '')
+        return out
