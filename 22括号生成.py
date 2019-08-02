@@ -40,3 +40,38 @@ class Solution:
                 if s not in o:
                     o.append(s)
         return o
+
+#回溯
+class Solution:
+    def generateParenthesis(self, n: int) -> List[str]:
+        if n < 1:
+            return []
+        out = []
+        def backtrack(tmp, l, r):
+            if len(tmp) == 2*n:
+                out.append(tmp)
+                return
+            if l > n or r > n:
+                return
+            if l < n:
+                backtrack(tmp+'(', l+1,r)
+            if r < l:
+                backtrack(tmp+')', l,r+1)
+        backtrack('', 0, 0)
+        return out
+
+#回溯
+class Solution:
+    def generateParenthesis(self, n: int) -> List[str]:
+        res = []
+
+        def helper(left_p, right_p, tmp):
+            if left_p == 0 and right_p == 0:
+                res.append(tmp)
+                return
+            if left_p < 0 or right_p < 0 or left_p > right_p:
+                return
+            helper(left_p-1, right_p, tmp+"(")
+            helper(left_p, right_p-1, tmp+")")
+        helper(n, n, "")
+        return res
