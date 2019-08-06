@@ -36,3 +36,16 @@ class Solution(object):
                             maxlenlist[j+1] = nums[i]
                             break
         return len(maxlenlist)
+
+#  动态规划，dp[i] = max(dp[j])+1, 0<=j<i
+class Solution:
+    def lengthOfLIS(self, nums: List[int]) -> int:
+        if not nums:
+            return 0
+        out = [1 for _ in range(len(nums))]
+        for i in range(len(nums)):
+            for j in range(i):
+                if nums[j] < nums[i]:
+                    out[i] = max(out[i], out[j]+1)
+        out.sort()
+        return out[-1]
